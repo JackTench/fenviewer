@@ -9,9 +9,6 @@ fn main() {
     
     // Get CLI argument for given FEN.
     let args = CliArgs::parse();
-    
-    // debug code
-    //println!("FEN passed in was {}", args.fen_input);
 
     // Convert input into board struct.
     let fen_input_split: Vec<&str> = args.fen_input.split(" ").collect();
