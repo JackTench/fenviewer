@@ -26,10 +26,10 @@ fn main() {
     ];
 
     // Print formatted board.
-    let mut n = 1;
+    let mut n = 8;
     for item in fen {
         print!("{}", n);
-        n = n + 1;
+        n = n - 1;
         print!("|");
         for c in item.chars() {
             if c.is_numeric() {
