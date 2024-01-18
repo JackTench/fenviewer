@@ -25,18 +25,24 @@ fn main() {
         String::from(fen_vec[7])
     ];
 
+    // Print formatted board.
+    let mut n = 1;
     for item in fen {
+        print!("{}", n);
+        n = n + 1;
+        print!("|");
         for c in item.chars() {
             if c.is_numeric() {
                 let spaces = (c.to_string()).parse::<i32>().unwrap();
                 for _i in 0..spaces {
-                    print!(" ");
+                    print!(" |");
                 }
             } else {
-                print!("{}", c);
+                print!("{}|", c);
             }
         }
         println!("");
     }
+    println!("  a b c d e f g h ");
 
 }
