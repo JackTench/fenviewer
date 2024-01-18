@@ -29,7 +29,7 @@ fn main() {
         for c in item.chars() {
             if c.is_numeric() {
                 let spaces = (c.to_string()).parse::<i32>().unwrap();
-                for _i in 1..spaces {
+                for _i in 0..spaces {
                     print!(" ");
                 }
             } else {
