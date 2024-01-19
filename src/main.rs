@@ -1,6 +1,12 @@
 use clap::Parser;
 
 #[derive(Parser)]
+#[clap(
+    name = "fenparser",
+    version = "1.0",
+    author = "Jack Tench",
+    about = "A simple utility for visualising chess positons."
+)]
 struct CliArgs {
     fen_input: String,
 }
