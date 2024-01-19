@@ -1,4 +1,5 @@
 use clap::Parser;
+use regex::Regex;
 
 #[derive(Parser)]
 #[clap(
@@ -11,10 +12,21 @@ struct CliArgs {
     fen_input: String,
 }
 
+fn is_valid_fen(fen: &str) -> bool {
+    let fen_regex = Regex::new(r"^[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+/[rnbqkpRNBQKP1-8]+\s[w|b]\s(-|[a-h][1-8])\s\d+\s\d+$").unwrap();
+    fen_regex.is_match(fen)
+}
+
 fn main() {
     
     // Get CLI argument for given FEN.
     let args = CliArgs::parse();
+
+    // Validate FEN.
+    if !is_valid_fen(&args.fen_input) {
+        eprintln!("Error: Given input was not a FEN.");
+        std::process::exit(1);
+    }
 
     // Convert input into board struct.
     let fen_input_split: Vec<&str> = args.fen_input.split(" ").collect();
